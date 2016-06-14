@@ -19,35 +19,27 @@ import javax.persistence.Persistence;
  * @author tss
  */
 public class App {
-    
+
     public static void main(String[] args) {
-        
+
         //System.out.println("Start jpa ..");
-        
         //EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         //EntityManager em = emf.createEntityManager();
         //EntityManager em = DbService.getEm();
-        
         //System.out.println("jpa ok ..");
-        
         //ToDo td = new ToDo();
         //td.setTesto("caffè tra poco ...");
         //td.setDataCreazione(new Date());
-        
         //em.getTransaction().begin();
         //em.persist(td);
         //em.getTransaction().commit();
-        
         //em.close();
-        
         //ToDoService.save(td);
-        
-         java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
             }
-    });
+        });
 
     }
 }
-    
