@@ -6,6 +6,8 @@
 package it.java858.todoapp.service;
 
 import it.java858.todoapp.entity.Categoria;
+import it.java858.todoapp.service.event.CategoriaEventListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -15,9 +17,19 @@ import javax.persistence.EntityManager;
  */
 public class CategoriaService {
 
-    public CategoriaService() {
+    private CategoriaService() {
     }
 
+    private static List<CategoriaEventListener> listeners= new ArrayList<>();
+    /**
+     * aggiunge ascoltatore alla lista
+     * @param listener 
+     */
+    public static void addCategoriaEventListener(CategoriaEventListener listener){
+    
+        listeners.add(listener);
+    }
+    
     public static Categoria save(Categoria c) {
         EntityManager em = DbService.getEm();
         em.getTransaction().begin();
@@ -40,5 +52,7 @@ public class CategoriaService {
         listcat = em.createQuery("select c from Categoria c order by c.nome", Categoria.class).getResultList();
         return listcat;
     }
+    
+    
 
 }

@@ -116,7 +116,7 @@ public class CategoriaCRUD extends javax.swing.JDialog {
         CategoriaEdit editView = new CategoriaEdit(toEdit,this,true);
         editView.setLocationRelativeTo(this);
         editView.setVisible(true);
-        tblCategorie.updateUI();
+        //tblCategorie.updateUI();
         
     }//GEN-LAST:event_cmdModificaActionPerformed
 
