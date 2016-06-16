@@ -5,10 +5,13 @@
  */
 package it.java858.todoapp;
 
+import it.java858.todoapp.entity.Categoria;
 import it.java858.todoapp.entity.ToDo;
 import it.java858.todoapp.gui.Main;
+import it.java858.todoapp.service.CategoriaService;
 import it.java858.todoapp.service.DbService;
 import it.java858.todoapp.service.ToDoService;
+import it.java858.todoapp.service.event.CategoriaEventListener;
 import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,6 +38,8 @@ public class App {
         //em.getTransaction().commit();
         //em.close();
         //ToDoService.save(td);
+        
+        CategoriaService.addCategoriaEventListener(new AscoltaEventiCategoria());
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
@@ -42,4 +47,25 @@ public class App {
         });
 
     }
+}
+class AscoltaEventiCategoria implements CategoriaEventListener{
+
+    @Override
+    public void onCreate(Categoria c) {
+        System.out.println("Hai creato la cagoria:" + c);
+    }
+
+    @Override
+    public void onDelete(Categoria c) {
+       System.out.println("Hai cancellato la cagoria:" + c); 
+    }
+
+    @Override
+    public void onUpdate(Categoria c) {
+        System.out.println("Hai modificato la cagoria:" + c);
+    }
+       
+    
+    
+    
 }
