@@ -69,12 +69,6 @@ public class Categoria implements Serializable {
         return "Categoria{" + "id=" + id + ", nome=" + nome + '}';
     }
 
-
-    
-    
-    
-    
-    
-    
+   
     
 }
