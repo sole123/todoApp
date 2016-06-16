@@ -5,6 +5,11 @@
  */
 package it.java858.todoapp.gui;
 
+import it.java858.todoapp.entity.Categoria;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import sun.awt.X11.Screen;
+
 /**
  *
  * @author tss
@@ -16,6 +21,13 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = screenSize.height;
+        int width = screenSize.width; 
+        this.setSize(width/2, height/2);
+        this.setLocationRelativeTo(null);
+                
+        
     }
 
     /**
@@ -37,6 +49,7 @@ public class Main extends javax.swing.JFrame {
         mnuGestCategorie = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestione toDo");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,7 +110,7 @@ public class Main extends javax.swing.JFrame {
 
     private void mnuCreaCategorieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCreaCategorieActionPerformed
 
-        CategoriaEdit edit = new CategoriaEdit(this, true);
+        CategoriaEdit edit = new CategoriaEdit(new Categoria(),this, true);
         edit.setLocationRelativeTo(this);
         edit.setVisible(true);
 
