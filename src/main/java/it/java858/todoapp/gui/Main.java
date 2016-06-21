@@ -6,27 +6,30 @@
 package it.java858.todoapp.gui;
 
 import it.java858.todoapp.entity.Categoria;
+import it.java858.todoapp.service.CategoriaService;
+import it.java858.todoapp.service.event.CategoriaEventListener;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import sun.awt.X11.Screen;
 
 /**
  *
  * @author tss
  */
-public class Main extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame implements CategoriaEventListener {
 
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
+        CategoriaService.addCategoriaEventListener(this);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int height = screenSize.height;
         int width = screenSize.width; 
         this.setSize(width/2, height/2);
         this.setLocationRelativeTo(null);
-                
         
     }
 
@@ -139,4 +142,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuEsci;
     private javax.swing.JMenuItem mnuGestCategorie;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onCreate(Categoria c) {
+        JOptionPane.showMessageDialog(null, "Hai creato la cagoria:" + c);
+    }
+
+    @Override
+    public void onDelete(Categoria c) {
+       JOptionPane.showMessageDialog(null,"Hai cancellato la cagoria:" + c); 
+    }
+
+    @Override
+    public void onUpdate(Categoria c) {
+        JOptionPane.showMessageDialog(null,"Hai modificato la cagoria:" + c);
+    }
 }

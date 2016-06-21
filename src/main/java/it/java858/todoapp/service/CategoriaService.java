@@ -50,6 +50,7 @@ public class CategoriaService {
     public static void elimina(Categoria c) {
         EntityManager em = DbService.getEm();
         em.getTransaction().begin();
+        Categoria find = em.find(Categoria.class, c.getId());
         em.remove(c);
         em.getTransaction().commit();
         //Richiama il metodo onElimina su tutti gli ascoltatori iscritti

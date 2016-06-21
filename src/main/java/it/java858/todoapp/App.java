@@ -16,6 +16,7 @@ import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,7 @@ public class App {
         //em.close();
         //ToDoService.save(td);
         
-        CategoriaService.addCategoriaEventListener(new AscoltaEventiCategoria());
+        //CategoriaService.addCategoriaEventListener(new AscoltaEventiCategoria());
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Main().setVisible(true);
@@ -52,17 +53,17 @@ class AscoltaEventiCategoria implements CategoriaEventListener{
 
     @Override
     public void onCreate(Categoria c) {
-        System.out.println("Hai creato la cagoria:" + c);
+        JOptionPane.showMessageDialog(null, "Hai creato la cagoria:" + c);
     }
 
     @Override
     public void onDelete(Categoria c) {
-       System.out.println("Hai cancellato la cagoria:" + c); 
+       JOptionPane.showMessageDialog(null,"Hai cancellato la cagoria:" + c); 
     }
 
     @Override
     public void onUpdate(Categoria c) {
-        System.out.println("Hai modificato la cagoria:" + c);
+        JOptionPane.showMessageDialog(null,"Hai modificato la cagoria:" + c);
     }
        
     
